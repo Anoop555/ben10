@@ -1,0 +1,1579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omnitrix Store | Official Ben 10 Merchandise</title>
+    <link href="[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600;700&display=swap)" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --classic-green: #00ff00;
+            --classic-dark: #0a1a0a;
+            --alien-force-blue: #00bfff;
+            --alien-force-dark: #0a0a2a;
+            --ultimate-red: #ff3333;
+            --ultimate-dark: #1a0a0a;
+            --omniverse-green: #32cd32;
+            --omniverse-dark: #0a1a1a;
+            --reboot-orange: #ff6600;
+            --reboot-dark: #1a0f0a;
+        }
+
+        body {
+            font-family: 'Exo 2', sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0a0a0a 100%);
+        }
+
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(0, 255, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 191, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(255, 51, 51, 0.05) 0%, transparent 50%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        /* Floating Particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--classic-green);
+            border-radius: 50%;
+            animation: float 15s infinite;
+            opacity: 0.6;
+        }
+
+        .particle:nth-child(2n) { background: var(--alien-force-blue); }
+        .particle:nth-child(3n) { background: var(--ultimate-red); }
+        .particle:nth-child(4n) { background: var(--reboot-orange); }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--classic-green);
+            box-shadow: 0 0 30px rgba(0, 255, 0, 0.3);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            background: linear-gradient(90deg, var(--classic-green), var(--alien-force-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(0, 255, 0, 0.5);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: conic-gradient(from 0deg, var(--classic-green), var(--alien-force-blue), var(--classic-green));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: rotate 10s linear infinite;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+        }
+
+        .logo-icon::before {
+            content: '10';
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1rem;
+            font-weight: 900;
+            color: #0a0a0a;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--classic-green);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--classic-green);
+            text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+        }
+
+        .cart-btn {
+            background: linear-gradient(135deg, var(--classic-green), #00cc00);
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            color: #0a0a0a;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+        }
+
+        .cart-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 255, 0, 0.5);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0, 255, 0, 0.2) 0%, transparent 70%);
+            animation: heroGlow 4s ease-in-out infinite;
+        }
+
+        @keyframes heroGlow {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+            50% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, #ffffff, var(--classic-green), var(--alien-force-blue), #ffffff);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 3s linear infinite;
+        }
+
+        @keyframes shimmer {
+            from { background-position: 200% center; }
+            to { background-position: -200% center; }
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: #cccccc;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--classic-green), #00cc00);
+            color: #0a0a0a;
+            box-shadow: 0 0 30px rgba(0, 255, 0, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 40px rgba(0, 255, 0, 0.6);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #ffffff;
+            border: 2px solid var(--classic-green);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 255, 0, 0.1);
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+        }
+
+        /* Omnitrix Display */
+        .omnitrix-display {
+            width: 200px;
+            height: 200px;
+            margin: 3rem auto;
+            position: relative;
+        }
+
+        .omnitrix-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 4px solid var(--classic-green);
+            animation: omnitrixPulse 2s ease-in-out infinite;
+        }
+
+        .omnitrix-ring:nth-child(1) {
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .omnitrix-ring:nth-child(2) {
+            width: 70%;
+            height: 70%;
+            top: 15%;
+            left: 15%;
+            animation-delay: 0.3s;
+        }
+
+        .omnitrix-ring:nth-child(3) {
+            width: 40%;
+            height: 40%;
+            top: 30%;
+            left: 30%;
+            animation-delay: 0.6s;
+            background: var(--classic-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes omnitrixPulse {
+            0%, 100% { box-shadow: 0 0 10px var(--classic-green); }
+            50% { box-shadow: 0 0 30px var(--classic-green), 0 0 60px var(--classic-green); }
+        }
+
+        /* Collection Section Styles */
+        .collection-section {
+            padding: 6rem 2rem;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header p {
+            color: #aaaaaa;
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .section-divider {
+            width: 100px;
+            height: 4px;
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        /* Classic Ben 10 */
+        .classic-section {
+            background: linear-gradient(180deg, var(--classic-dark) 0%, #0a0a0a 100%);
+        }
+
+        .classic-section .section-header h2 {
+            color: var(--classic-green);
+            text-shadow: 0 0 30px rgba(0, 255, 0, 0.5);
+        }
+
+        .classic-section .section-divider {
+            background: var(--classic-green);
+            box-shadow: 0 0 20px var(--classic-green);
+        }
+
+        /* Alien Force */
+        .alien-force-section {
+            background: linear-gradient(180deg, var(--alien-force-dark) 0%, #0a0a0a 100%);
+        }
+
+        .alien-force-section .section-header h2 {
+            color: var(--alien-force-blue);
+            text-shadow: 0 0 30px rgba(0, 191, 255, 0.5);
+        }
+
+        .alien-force-section .section-divider {
+            background: var(--alien-force-blue);
+            box-shadow: 0 0 20px var(--alien-force-blue);
+        }
+
+        /* Ultimate Alien */
+        .ultimate-section {
+            background: linear-gradient(180deg, var(--ultimate-dark) 0%, #0a0a0a 100%);
+        }
+
+        .ultimate-section .section-header h2 {
+            color: var(--ultimate-red);
+            text-shadow: 0 0 30px rgba(255, 51, 51, 0.5);
+        }
+
+        .ultimate-section .section-divider {
+            background: var(--ultimate-red);
+            box-shadow: 0 0 20px var(--ultimate-red);
+        }
+
+        /* Omniverse */
+        .omniverse-section {
+            background: linear-gradient(180deg, var(--omniverse-dark) 0%, #0a0a0a 100%);
+        }
+
+        .omniverse-section .section-header h2 {
+            color: var(--omniverse-green);
+            text-shadow: 0 0 30px rgba(50, 205, 50, 0.5);
+        }
+
+        .omniverse-section .section-divider {
+            background: var(--omniverse-green);
+            box-shadow: 0 0 20px var(--omniverse-green);
+        }
+
+        /* Reboot */
+        .reboot-section {
+            background: linear-gradient(180deg, var(--reboot-dark) 0%, #0a0a0a 100%);
+        }
+
+        .reboot-section .section-header h2 {
+            color: var(--reboot-orange);
+            text-shadow: 0 0 30px rgba(255, 102, 0, 0.5);
+        }
+
+        .reboot-section .section-divider {
+            background: var(--reboot-orange);
+            box-shadow: 0 0 20px var(--reboot-orange);
+        }
+
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: rgba(20, 20, 30, 0.8);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .classic-section .product-card:hover {
+            box-shadow: 0 20px 60px rgba(0, 255, 0, 0.3);
+            border-color: var(--classic-green);
+        }
+
+        .alien-force-section .product-card:hover {
+            box-shadow: 0 20px 60px rgba(0, 191, 255, 0.3);
+            border-color: var(--alien-force-blue);
+        }
+
+        .ultimate-section .product-card:hover {
+            box-shadow: 0 20px 60px rgba(255, 51, 51, 0.3);
+            border-color: var(--ultimate-red);
+        }
+
+        .omniverse-section .product-card:hover {
+            box-shadow: 0 20px 60px rgba(50, 205, 50, 0.3);
+            border-color: var(--omniverse-green);
+        }
+
+        .reboot-section .product-card:hover {
+            box-shadow: 0 20px 60px rgba(255, 102, 0, 0.3);
+            border-color: var(--reboot-orange);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .classic-section .product-image {
+            background: linear-gradient(135deg, #0a1a0a 0%, #1a3a1a 100%);
+        }
+
+        .alien-force-section .product-image {
+            background: linear-gradient(135deg, #0a0a2a 0%, #1a1a4a 100%);
+        }
+
+        .ultimate-section .product-image {
+            background: linear-gradient(135deg, #1a0a0a 0%, #3a1a1a 100%);
+        }
+
+        .omniverse-section .product-image {
+            background: linear-gradient(135deg, #0a1a1a 0%, #1a3a3a 100%);
+        }
+
+        .reboot-section .product-image {
+            background: linear-gradient(135deg, #1a0f0a 0%, #3a2a1a 100%);
+        }
+
+        .product-icon {
+            font-size: 5rem;
+            opacity: 0.8;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .badge-new {
+            background: var(--classic-green);
+            color: #0a0a0a;
+        }
+
+        .badge-hot {
+            background: var(--ultimate-red);
+            color: #ffffff;
+        }
+
+        .badge-limited {
+            background: linear-gradient(90deg, #ffd700, #ff8c00);
+            color: #0a0a0a;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-desc {
+            color: #aaaaaa;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product-price {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .classic-section .product-price { color: var(--classic-green); }
+        .alien-force-section .product-price { color: var(--alien-force-blue); }
+        .ultimate-section .product-price { color: var(--ultimate-red); }
+        .omniverse-section .product-price { color: var(--omniverse-green); }
+        .reboot-section .product-price { color: var(--reboot-orange); }
+
+        .add-cart-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .classic-section .add-cart-btn {
+            background: var(--classic-green);
+            color: #0a0a0a;
+        }
+
+        .alien-force-section .add-cart-btn {
+            background: var(--alien-force-blue);
+            color: #0a0a0a;
+        }
+
+        .ultimate-section .add-cart-btn {
+            background: var(--ultimate-red);
+            color: #ffffff;
+        }
+
+        .omniverse-section .add-cart-btn {
+            background: var(--omniverse-green);
+            color: #0a0a0a;
+        }
+
+        .reboot-section .add-cart-btn {
+            background: var(--reboot-orange);
+            color: #0a0a0a;
+        }
+
+        .add-cart-btn:hover {
+            transform: scale(1.1) rotate(10deg);
+        }
+
+        /* Category Cards */
+        .category-showcase {
+            padding: 4rem 2rem;
+            background: #0a0a0a;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .category-card {
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .category-card:hover::before {
+            opacity: 1;
+        }
+
+        .cat-figures {
+            background: linear-gradient(135deg, rgba(0, 255, 0, 0.1), rgba(0, 255, 0, 0.2));
+            border: 2px solid var(--classic-green);
+        }
+
+        .cat-figures:hover {
+            box-shadow: 0 0 40px rgba(0, 255, 0, 0.4);
+        }
+
+        .cat-apparel {
+            background: linear-gradient(135deg, rgba(0, 191, 255, 0.1), rgba(0, 191, 255, 0.2));
+            border: 2px solid var(--alien-force-blue);
+        }
+
+        .cat-apparel:hover {
+            box-shadow: 0 0 40px rgba(0, 191, 255, 0.4);
+        }
+
+        .cat-accessories {
+            background: linear-gradient(135deg, rgba(255, 51, 51, 0.1), rgba(255, 51, 51, 0.2));
+            border: 2px solid var(--ultimate-red);
+        }
+
+        .cat-accessories:hover {
+            box-shadow: 0 0 40px rgba(255, 51, 51, 0.4);
+        }
+
+        .cat-collectibles {
+            background: linear-gradient(135deg, rgba(255, 102, 0, 0.1), rgba(255, 102, 0, 0.2));
+            border: 2px solid var(--reboot-orange);
+        }
+
+        .cat-collectibles:hover {
+            box-shadow: 0 0 40px rgba(255, 102, 0, 0.4);
+        }
+
+        .category-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .category-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .category-count {
+            color: #888888;
+            font-size: 0.9rem;
+        }
+
+        /* Featured Banner */
+        .featured-banner {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #0a1a0a 0%, #1a0a1a 50%, #0a0a2a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .featured-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg at 50% 50%, 
+                transparent 0deg,
+                rgba(0, 255, 0, 0.1) 60deg,
+                transparent 120deg,
+                rgba(0, 191, 255, 0.1) 180deg,
+                transparent 240deg,
+                rgba(255, 51, 51, 0.1) 300deg,
+                transparent 360deg
+            );
+            animation: rotateBg 20s linear infinite;
+        }
+
+        @keyframes rotateBg {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .featured-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .featured-text h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, var(--classic-green), var(--alien-force-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .featured-text p {
+            color: #cccccc;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .featured-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .omnitrix-3d {
+            width: 300px;
+            height: 300px;
+            position: relative;
+            perspective: 1000px;
+        }
+
+        .omnitrix-face {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            border-radius: 50%;
+            animation: float3d 6s ease-in-out infinite;
+        }
+
+        .omnitrix-outer {
+            background: linear-gradient(135deg, #333333, #1a1a1a);
+            border: 8px solid #444444;
+            box-shadow: 
+                0 0 30px rgba(0, 0, 0, 0.5),
+                inset 0 0 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .omnitrix-middle {
+            width: 70%;
+            height: 70%;
+            top: 15%;
+            left: 15%;
+            background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+            border: 4px solid var(--classic-green);
+            box-shadow: 0 0 20px var(--classic-green);
+        }
+
+        .omnitrix-core {
+            width: 40%;
+            height: 40%;
+            top: 30%;
+            left: 30%;
+            background: var(--classic-green);
+            box-shadow: 
+                0 0 40px var(--classic-green),
+                0 0 80px var(--classic-green),
+                inset 0 0 20px rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .omnitrix-core::before {
+            content: '';
+            width: 60%;
+            height: 60%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), transparent);
+            border-radius: 50%;
+        }
+
+        @keyframes float3d {
+            0%, 100% { transform: rotateX(10deg) rotateY(10deg); }
+            25% { transform: rotateX(-10deg) rotateY(10deg); }
+            50% { transform: rotateX(-10deg) rotateY(-10deg); }
+            75% { transform: rotateX(10deg) rotateY(-10deg); }
+        }
+
+        /* Newsletter */
+        .newsletter {
+            padding: 6rem 2rem;
+            background: linear-gradient(180deg, #0a0a0a 0%, #0a1a0a 100%);
+            text-align: center;
+        }
+
+        .newsletter h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--classic-green);
+        }
+
+        .newsletter p {
+            color: #aaaaaa;
+            margin-bottom: 2rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            min-width: 250px;
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            border: 2px solid #333333;
+            background: rgba(20, 20, 30, 0.8);
+            color: #ffffff;
+            font-family: 'Exo 2', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-form input:focus {
+            outline: none;
+            border-color: var(--classic-green);
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+        }
+
+        .newsletter-form button {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            border: none;
+            background: linear-gradient(135deg, var(--classic-green), #00cc00);
+            color: #0a0a0a;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-form button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 255, 0, 0.5);
+        }
+
+        /* Footer */
+        footer {
+            background: #050505;
+            padding: 4rem 2rem 2rem;
+            border-top: 2px solid #1a1a1a;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--classic-green);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section ul li a {
+            color: #888888;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--classic-green);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--classic-green);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 3rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid #1a1a1a;
+            text-align: center;
+            color: #666666;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .featured-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .omnitrix-3d {
+                width: 200px;
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation"></div>
+    <div class="particles">
+        <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+        <div class="particle" style="left: 20%; animation-delay: 2s;"></div>
+        <div class="particle" style="left: 30%; animation-delay: 4s;"></div>
+        <div class="particle" style="left: 40%; animation-delay: 1s;"></div>
+        <div class="particle" style="left: 50%; animation-delay: 3s;"></div>
+        <div class="particle" style="left: 60%; animation-delay: 5s;"></div>
+        <div class="particle" style="left: 70%; animation-delay: 2.5s;"></div>
+        <div class="particle" style="left: 80%; animation-delay: 4.5s;"></div>
+        <div class="particle" style="left: 90%; animation-delay: 1.5s;"></div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <div class="logo-icon"></div>
+                OMNITRIX STORE
+            </div>
+            <ul class="nav-links">
+                <li><a href="#classic">Classic</a></li>
+                <li><a href="#alien-force">Alien Force</a></li>
+                <li><a href="#ultimate">Ultimate Alien</a></li>
+                <li><a href="#omniverse">Omniverse</a></li>
+                <li><a href="#reboot">Reboot</a></li>
+            </ul>
+            <button class="cart-btn">
+                🛒 Cart (0)
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>IT'S HERO TIME!</h1>
+            <p>The ultimate destination for Ben 10 collectors and fans. Explore merchandise from every era of the Omnitrix saga.</p>
+            <div class="omnitrix-display">
+                <div class="omnitrix-ring"></div>
+                <div class="omnitrix-ring"></div>
+                <div class="omnitrix-ring"></div>
+            </div>
+            <div class="hero-btns">
+                <a href="#classic" class="btn btn-primary">Shop Now</a>
+                <a href="#categories" class="btn btn-secondary">Browse Collections</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="category-showcase" id="categories">
+        <div class="section-header">
+            <h2 style="color: #ffffff;">Shop By Category</h2>
+            <div class="section-divider" style="background: linear-gradient(90deg, var(--classic-green), var(--alien-force-blue));"></div>
+        </div>
+        <div class="category-grid">
+            <div class="category-card cat-figures">
+                <div class="category-icon">🦸</div>
+                <h3 class="category-name">Action Figures</h3>
+                <p class="category-count">150+ Products</p>
+            </div>
+            <div class="category-card cat-apparel">
+                <div class="category-icon">👕</div>
+                <h3 class="category-name">Apparel</h3>
+                <p class="category-count">200+ Products</p>
+            </div>
+            <div class="category-card cat-accessories">
+                <div class="category-icon">⌚</div>
+                <h3 class="category-name">Omnitrix Replicas</h3>
+                <p class="category-count">50+ Products</p>
+            </div>
+            <div class="category-card cat-collectibles">
+                <div class="category-icon">🏆</div>
+                <h3 class="category-name">Collectibles</h3>
+                <p class="category-count">100+ Products</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Classic Ben 10 Section -->
+    <section class="collection-section classic-section" id="classic">
+        <div class="section-header">
+            <h2>CLASSIC BEN 10</h2>
+            <div class="section-divider"></div>
+            <p>Where it all began. The original 10-year-old hero and his first Omnitrix adventures (2005-2008)</p>
+        </div>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="product-badge badge-hot">HOT</span>
+                    <div class="product-icon">🔥</div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Heatblast Action Figure</h3>
+                    <p class="product-desc">Deluxe 6" figure with flame effects</p>
+                    <div class="product-footer">
+                        <span class="product-price">$29.99</span>
+                        <button class="add-cart-btn">+</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="product-badge badge-new">NEW</span>
+                    <div class="product-icon">💎</div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Diamondhead Crystal Set</h3>
+                    <p class="product-desc">Premium collector's edition with LED base</p>
+                    <div class="product-footer">
+                        <span class="product-price">$49.99</span>
+                        <button class="add-cart-btn">+</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <div class="product-icon">⌚</div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Original Omnitrix Replica</h3>
+                    <p class="product-desc">Light-up dial with alien sounds</p>
+                    <div class="product-footer">
+                        <span class="product-price">$79.99</span>
+                        <button class="add-cart-btn">+</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="product-badge badge-limited">LIMITED</span>
+                    <div class="product-icon">👽</div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Four Arms Premium Statue</h3>
+                    <p class="product-desc">12" hand-painted resin statue</p>
+                    <div class="product-footer">
+                        <span class="product-price">$149.99</span>
+                        <button class="add-cart-btn">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Alien Force Section -->
+    <section class="collection-section alien-force-section" id="alien-force">
+        <div class="section-header">
+            <h2>BEN 10: ALIEN FORCE</h2>
+            <div class="section-divider"></div>
+            <p>The teenage years begin. Ben returns at 15 with the new Omnitrix and powerful aliens (2008-2010)</p>
+        </div>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="product-badge badge-hot">HOT</span>
+                    <div class="product-icon">🦠</div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Swampfire Figure</h3>
+                    <p class="product-desc">Articulated figure with vine accessories</p>
+                    <div class="product-footer">
+                        <span class="product-price">$34.99</span>
+                        <button class="add-cart-btn">+</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <div class="product-icon">🦇</div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Big Chill Hoodie</h3>
+                    <p class="product-desc">Premium cotton blend with wing design</p>
+                    <div class="product-footer">
+                        <span class="product-price">$59.99</span>
+                        <button class="add-cart-btn">+</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="product-badge badge-new">NEW</span>
+                    <div class="product-icon">⚡</div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Chromastone Power Set</h3>
+                    <p class="product-desc">Light-up figure with energy effects</p>
+                    <div class="product-footer">
+                        <span class="product-price">$44.99</span>
+                        <button class="add-cart-btn">+</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <div class="product-icon">🌊</div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Jetray Flight Pack</h3>
+                    <p class="product-desc">Backpack with light-up wings</p>
+                    <div class="product-footer">
+                        <span class="product-price">$69.99</span>
+                        <button class="add-cart-btn">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ultimate Alien Section -->
+    <section class="collection-section ultimate-section" id="ultimate">
+        <div class="section-header">
+            <h2>BEN 10: ULTIMATE ALIEN</h2>
+            <div class="section-divider"></div>
+            <p>Evolution unleashed. The Ultimatrix brings ultimate transformations (2010-2012)</p>
+        </div>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="product-badge badge-limited">LIMITED</span>
+                    <div class="product-icon">🔴</div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Ultimatrix Deluxe</h3>
+                    <p class="product-desc">Full-size replica with evolution feature</p>
+                    <div class="product-footer">
+                        <span class="product-price">$129.99</span>
+                        <button class="add-cart-btn">+</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="product-badge badge-hot">HOT</span>
+                    <div class="product-icon">🦁</div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Ultimate Humungousaur</h3>
+                    <p class="product-desc">10" mega figure with missile launcher</p>
+                    <div class="product-footer">
+                        <span class="product-price">$54.99</span>
+                        <button class="add-cart-btn">+</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <div class="product-icon">🕷️</div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Ultimate Spidermonkey</h3>
+                    <p class="product-desc">Web-slinging action figure</p>
+                    <div class="product-footer">
+                        <span class="product-price">$39.99</span>
+                        <button class="add-cart-btn">+</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="product-badge badge-new">NEW</span>
+                    <div class="product-icon">💀</div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Ultimate Echo Echo</h3>
+                    <p class="product-desc">Sonic disc launcher included</p>
+                    <div class="product-footer">
+                        <span class="product-price">$42.99</span>
+                        <button class="add-cart-btn">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Banner -->
+    <section class="featured-banner">
+        <div class="featured-content">
+            <div class="featured-text">
+                <h2>MASTER THE OMNITRIX</h2>
+                <p>Own a piece of the most powerful device in the universe. Our premium Omnitrix replicas feature authentic details, working lights, sound effects, and the iconic alien selection dial. Perfect for display or cosplay.</p>
+                <a href="#" class="btn btn-primary">Explore Omnitrix Collection</a>
+            </div>
+            <div class="featured-visual">
+                <div class="omnitrix-3d">
+                    <div class="omnitrix-face omnitrix-outer"></div>
+                    <div class="omnitrix-face omnitrix-middle"></div>
+                    <div class="omnitrix-face omnitrix-core"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Omniverse Section -->
+    <section class="collection-section omniverse-section" id="omniverse">
+        <div class="section-header">
+            <h2>BEN 10: OMNIVERSE</h2>
+            <div class="section-divider"></div>
+            <p>New art style, new adventures. Ben teams up with Rook across time and space (2012-2014)</p>
+        </div>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="product-badge badge-new">NEW</span>
+                    <div class="product-icon">⚡</div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Feedback Figure</h3>
+                    <p class="product-desc">Light-up energy absorption effect</p>
+                    <div class="product-footer">
+                        <span class="product-price">$36.99</span>
+                        <button class="add-cart-btn">+</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <div class="product-icon">🛡️</div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Rook Blonko Set</h3>
+                    <p class="product-desc">With Proto-Tool transforming weapon</p>
+                    <div class="product-footer">
+                        <span class="product-price">$49.99</span>
+                        <button class="add-cart-btn">+</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="product-badge badge-hot">HOT</span>
+                    <div class="product-icon">🦴</div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Gravattack Globe</h3>
+                    <p class="product-desc">Desk lamp with gravity effect</p>
+                    <div class="product-footer">
+                        <span class="product-price">$64.99</span>
+                        <button class="add-cart-btn">+</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <div class="product-icon">🔧</div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Omniverse Omnitrix</h3>
+                    <p class="product-desc">Sleek new design with touch dial</p>
+                    <div class="product-footer">
+                        <span class="product-price">$89.99</span>
+                        <button class="add-cart-btn">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reboot Section -->
+    <section class="collection-section reboot-section" id="reboot">
+        <div class="section-header">
+            <h2>BEN 10 (REBOOT)</h2>
+            <div class="section-divider"></div>
+            <p>A fresh start for a new generation. Young Ben discovers the Omnitrix again (2016-2021)</p>
+        </div>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="product-badge badge-new">NEW</span>
+                    <div class="product-icon">🎮</div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Deluxe Omnitrix 2.0</h3>
+                    <p class="product-desc">40+ alien phrases and sounds</p>
+                    <div class="product-footer">
+                        <span class="product-price">$44.99</span>
+                        <button class="add-cart-btn">+</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="product-badge badge-hot">HOT</span>
+                    <div class="product-icon">🦖</div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Overflow Action Set</h3>
+                    <p class="product-desc">Water-shooting figure with armor</p>
+                    <div class="product-footer">
+                        <span class="product-price">$32.99</span>
+                        <button class="add-cart-btn">+</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <div class="product-icon">🚗</div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Rustbuggy Vehicle</h3>
+                    <p class="product-desc">Transforming car with Ben figure</p>
+                    <div class="product-footer">
+                        <span class="product-price">$54.99</span>
+                        <button class="add-cart-btn">+</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="product-badge badge-limited">LIMITED</span>
+                    <div class="product-icon">👾</div>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Alien X Supreme Set</h3>
+                    <p class="product-desc">Cosmic figure with star effects</p>
+                    <div class="product-footer">
+                        <span class="product-price">$79.99</span>
+                        <button class="add-cart-btn">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <h2>JOIN THE PLUMBERS</h2>
+        <p>Subscribe to get exclusive offers, new arrivals, and secret alien intel delivered to your inbox.</p>
+        <form class="newsletter-form">
+            <input type="email" placeholder="Enter your email address" required>
+            <button type="submit">Subscribe</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Shop</h3>
+                <ul>
+                    <li><a href="#classic">Classic Ben 10</a></li>
+                    <li><a href="#alien-force">Alien Force</a></li>
+                    <li><a href="#ultimate">Ultimate Alien</a></li>
+                    <li><a href="#omniverse">Omniverse</a></li>
+                    <li><a href="#reboot">Reboot</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Categories</h3>
+                <ul>
+                    <li><a href="#">Action Figures</a></li>
+                    <li><a href="#">Omnitrix Replicas</a></li>
+                    <li><a href="#">Apparel</a></li>
+                    <li><a href="#">Collectibles</a></li>
+                    <li><a href="#">Accessories</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Shipping Info</a></li>
+                    <li><a href="#">Returns</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Size Guide</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <div class="social-links">
+                    <a href="#" class="social-link">📘</a>
+                    <a href="#" class="social-link">📸</a>
+                    <a href="#" class="social-link">🐦</a>
+                    <a href="#" class="social-link">📺</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Omnitrix Store. Ben 10 and all related characters are trademarks of Cartoon Network. Fan merchandise store - not officially affiliated.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Cart functionality
+        let cartCount = 0;
+        document.querySelectorAll('.add-cart-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                cartCount++;
+                document.querySelector('.cart-btn').innerHTML = `🛒 Cart (${cartCount})`;
+                
+                // Animation feedback
+                this.style.transform = 'scale(1.3) rotate(360deg)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1) rotate(0deg)';
+                }, 300);
+            });
+        });
+
+        // Parallax effect on scroll
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.backgroundPositionY = scrolled * 0.5 + 'px';
+            }
+        });
+
+        // Generate more particles dynamically
+        const particlesContainer = document.querySelector('.particles');
+        for (let i = 0; i < 20; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 15 + 's';
+            particle.style.animationDuration = (10 + Math.random() * 10) + 's';
+            particlesContainer.appendChild(particle);
+        }
+    </script>
+</body>
+</html>
